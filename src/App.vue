@@ -8,10 +8,11 @@ import HelloWorld from '@/components/HelloWorld.vue';
     <img
       alt="Vue logo"
       class="logo"
-      src="@/assets/logo.svg"
+      src="@/assets/logo.png"
       width="125"
       height="125"
     />
+    <div class="app-name">Super trip planner</div>
 
     <div class="wrapper">
       <HelloWorld msg="You did it!" />
@@ -35,6 +36,14 @@ import HelloWorld from '@/components/HelloWorld.vue';
   padding: 2rem;
 
   font-weight: normal;
+}
+
+.app-name {
+  font-family: TheWantersDEMO;
+  font-size: 2rem;
+  color: #aee5eb;
+  text-align: center;
+  text-shadow: -1px 2px 0 #ff3f00;
 }
 
 header {
