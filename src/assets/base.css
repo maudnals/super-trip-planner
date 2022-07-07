@@ -1,22 +1,30 @@
 /* color palette from <https://github.com/vuejs/theme> */
 :root {
+  --color-white: white;
   --color-indigo-transparent: rgba(0, 41, 44, 0.59);
-  --color-indigo-light: #aee5eb;
+  --color-indigo-x-light: #aee5eb;
+  --color-indigo-x-light-transparent: #aee5eb41;
+  --color-indigo: #008b96;
   --color-indigo: #008b96;
   --color-orange: #ff3f00;
   --color-black: #151819;
   --color-grey-transparent: rgba(70, 117, 121, 0.5);
+  --color-grey-x-transparent: rgba(70, 117, 121, 0.2);
 }
 
 /* semantic color variables for this project */
 :root {
-  --color-background: var(--color-indigo-light);
+  --color-card: var(--color-white);
+  --color-background: var(--color-indigo-x-light);
   --color-border: var(--color-grey-transparent);
   --color-heading: var(--color-indigo-transparent);
   --color-button: var(--color-indigo);
   --color-button-destroy: var(--color-orange);
   --color-label: var(--color-orange);
   --color-text: var(--color-black);
+  --color-text-inverted: var(--color-white);
+  --color-shadow-light: var(--color-grey-x-transparent);
+  --color-shadow-dark: var(--color-grey-transparent);
 }
 
 *,
