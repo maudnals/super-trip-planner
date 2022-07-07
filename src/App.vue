@@ -15,11 +15,11 @@ import HelloWorld from '@/components/HelloWorld.vue';
     <div class="app-name">Super trip planner</div>
 
     <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
       <nav>
         <RouterLink to="/">Home</RouterLink>
+        <RouterLink to="/trips">My trips</RouterLink>
         <RouterLink to="/about">About</RouterLink>
+        <RouterLink to="/trip-ideas">Trip ideas</RouterLink>
       </nav>
     </div>
   </header>
