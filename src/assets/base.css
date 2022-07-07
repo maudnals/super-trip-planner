@@ -3,9 +3,9 @@
   --color-indigo-transparent: rgba(0, 41, 44, 0.59);
   --color-indigo-light: #aee5eb;
   --color-indigo: #008b96;
-  --color-orange: #ff6430;
+  --color-orange: #ff3f00;
   --color-black: #151819;
-  --color-grey-transparent: rgba(60, 60, 60, 0.12);
+  --color-grey-transparent: rgba(70, 117, 121, 0.5);
 }
 
 /* semantic color variables for this project */
@@ -15,6 +15,7 @@
   --color-heading: var(--color-indigo-transparent);
   --color-button: var(--color-indigo);
   --color-button-destroy: var(--color-orange);
+  --color-label: var(--color-orange);
   --color-text: var(--color-black);
 }
 
