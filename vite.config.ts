@@ -14,7 +14,11 @@ export default defineConfig({
       name: 'configure-response-headers',
       configureServer: (server) => {
         server.middlewares.use((_req, res, next) => {
-          res.setHeader('Referrer-Policy', 'no-referrer'), next();
+          // TODODEMO UNCOMMENT
+          // res.setHeader('Referrer-Policy', 'no-referrer');
+          // TODODEMO UNCOMMENT
+          // res.setHeader('Permissions-Policy', 'camera=(), microphone=()');
+          next();
         });
       },
     },
