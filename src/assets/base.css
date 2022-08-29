@@ -15,9 +15,9 @@
   --color-primary-x-light: #c1d4ff;
   --color-primary-x-light-transparent: #0033ab6e;
   --color-primary: #0033ab;
-  --color-secondary: #c5a700;
-  --color-secondary-dark: #977e00;
-  --color-secondary-x-light: #fff3ef;
+  --color-secondary: #f36a00;
+  --color-secondary-dark: #db4302;
+  --color-secondary-x-light: #f36a00;
   --color-black: #151819;
   --color-grey-transparent: rgba(70, 117, 121, 0.5);
   --color-grey-x-transparent: rgba(70, 117, 121, 0.2);
@@ -75,6 +75,15 @@ h1 {
 
 h2 {
   font-size: 2rem;
+  margin-top: 1.5rem;
+}
+
+li h2 {
+  margin-top: 0;
+}
+
+p {
+  margin: 1rem 0 2rem 0;
 }
 
 button {

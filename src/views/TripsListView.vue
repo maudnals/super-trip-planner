@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 import TripCard from '@/components/TripCard.vue';
 import { getPresetTrips } from '../data/data.trips.js';
 
@@ -36,9 +36,15 @@ export default {
 </script>
 
 <template>
-  <h1>My trips</h1>
-  <div class="buttons-wrapper">
+  <div id="header-trips">
+    <h1>My trips</h1>
+    <div class="buttons-wrapper">
+      <button @click="createNewTrip">+ New trip</button>
       <button @click="createMultipleTrips">✨ Create multiple trips</button>
+      <button @click="clearAllTrips" class="destroy">
+        ❌ Delete all trips
+      </button>
+    </div>
   </div>
   <li v-for="(trip, index) in trips">
     <a :href="'/trip?id=' + index">
@@ -57,7 +63,19 @@ li {
   list-style: none;
 }
 
-.buttons-wrapper > button {
-  margin-right: 1rem;
+#header-trips {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.buttons-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.buttons-wrapper button {
+  margin-left: 1rem;
 }
 </style>

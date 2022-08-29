@@ -22,10 +22,5 @@ defineProps<{
 
 label {
   width: 16rem;
-  font-family: RobotoMono-Regular;
-  color: var(--color-label);
-  letter-spacing: 2px;
-  font-size: 0.8rem;
-  text-transform: uppercase;
 }
 </style>
