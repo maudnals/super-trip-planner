@@ -1,60 +1,77 @@
-<script setup lang="ts">
+<script lang="ts">
 import { RouterLink, RouterView } from 'vue-router';
-import HelloWorld from '@/components/HelloWorld.vue';
+
+export default {
+  data() {
+    return {
+      platform: navigator?.userAgentData?.platform,
+      isMobile: navigator?.userAgentData?.mobile,
+    };
+  },
+};
 </script>
 
 <template>
-  <header>
-    <img
-      alt="Vue logo"
-      class="logo"
-      src="@/assets/logo.png"
-      width="125"
-      height="125"
-    />
-    <div class="app-name">Super trip planner</div>
+  <div :class="{ 'app-wrapper': true, mobile: isMobile }">
+    <header>
+      <img
+        alt="App logo"
+        class="logo"
+        src="@/assets/logo-train.png"
+        width="125"
+        height="125"
+      />
+      <div class="app-name">Super Trip Planner</div>
+      <div>
+        <nav>
+          <RouterLink to="/">My trips</RouterLink>
+          <RouterLink to="/trip-ideas">Trip ideas</RouterLink>
+          <RouterLink to="/about">About</RouterLink>
+          <RouterLink to="/debugger">Debugger</RouterLink>
+        </nav>
+      </div>
+    </header>
 
-    <div class="wrapper">
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/trips">My trips</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-        <RouterLink to="/trip-ideas">Trip ideas</RouterLink>
-      </nav>
-    </div>
-  </header>
-
-  <main>
-    <RouterView />
-  </main>
+    <main>
+      <RouterView />
+    </main>
+  </div>
 </template>
 
 <style>
 @import '@/assets/base.css';
 
-#app {
-  max-width: 1280px;
+.app-wrapper {
   font-weight: normal;
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+}
+
+.mobile {
+  flex-direction: column-reverse;
 }
 
 .app-name {
   font-family: TheWantersDEMO;
   font-size: 2rem;
   text-align: center;
-  color: var(--color-indigo-x-light);
-  text-shadow: -1px 2px 0 var(--color-orange);
+  color: var(--color-primary-x-light);
+  text-shadow: -1px 2px 0 var(--color-secondary);
 }
 
 header {
   line-height: 1.5;
   max-height: 100vh;
-  background: #005258;
+  background: var(--color-primary-dark);
   width: 100vw;
   padding: 0.5rem;
-  box-shadow: var(--color-indigo-transparent) 0px 6px 20px 0px;
+  box-shadow: var(--color-primary-transparent) 0px 6px 20px 0px;
 }
 
 main {
+  padding: 2rem;
+  height: 100%;
   padding: 2rem;
 }
 
@@ -69,12 +86,12 @@ a {
 
 nav a {
   text-decoration: none;
-  color: var(--color-indigo-x-light);
+  color: var(--color-primary-x-light);
   transition: 0.3s;
 }
 
 nav a:hover {
-  background-color: var(--color-indigo-x-light-transparent);
+  background-color: var(--color-primary-x-light-transparent);
 }
 
 nav {
@@ -84,12 +101,12 @@ nav {
 }
 
 nav a.router-link-exact-active {
-  background-color: var(--color-indigo-x-light-transparent);
+  background-color: var(--color-primary-x-light-transparent);
   color: var(--color-text-inverted);
 }
 
 nav a.router-link-exact-active:hover {
-  background-color: var(--color-indigo-x-light-transparent);
+  background-color: var(--color-primary-x-light-transparent);
 }
 
 nav a {
