@@ -1,12 +1,23 @@
 /* color palette from <https://github.com/vuejs/theme> */
 :root {
   --color-white: white;
-  --color-indigo-transparent: rgba(0, 41, 44, 0.59);
-  --color-indigo-x-light: #aee5eb;
-  --color-indigo-x-light-transparent: #aee5eb41;
-  --color-indigo: #008b96;
-  --color-indigo: #008b96;
-  --color-orange: #ff3f00;
+  /* 
+  --color-primary-dark: #005258;
+  --color-primary-transparent: rgba(0, 41, 44, 0.59);
+  --color-primary-x-light: #aee5eb;
+  --color-primary-x-light-transparent: #aee5eb41;
+  --color-primary: #008b96;
+  --color-secondary: #ff3f00;
+  --color-secondary-dark: #c73200;
+  --color-secondary-x-light: #fff3ef; */
+  --color-primary-dark: #0033ab;
+  --color-primary-transparent: #0033ab;
+  --color-primary-x-light: #c1d4ff;
+  --color-primary-x-light-transparent: #0033ab6e;
+  --color-primary: #0033ab;
+  --color-secondary: #c5a700;
+  --color-secondary-dark: #977e00;
+  --color-secondary-x-light: #fff3ef;
   --color-black: #151819;
   --color-grey-transparent: rgba(70, 117, 121, 0.5);
   --color-grey-x-transparent: rgba(70, 117, 121, 0.2);
@@ -15,12 +26,12 @@
 /* semantic color variables for this project */
 :root {
   --color-card: var(--color-white);
-  --color-background: var(--color-indigo-x-light);
+  --color-background: var(--color-primary-x-light);
   --color-border: var(--color-grey-transparent);
-  --color-heading: var(--color-indigo-transparent);
-  --color-button: var(--color-indigo);
-  --color-button-destroy: var(--color-orange);
-  --color-label: var(--color-orange);
+  --color-heading: var(--color-primary-transparent);
+  --color-button: var(--color-primary);
+  --color-button-destroy: var(--color-secondary);
+  --color-label: var(--color-secondary);
   --color-text: var(--color-black);
   --color-text-inverted: var(--color-white);
   --color-shadow-light: var(--color-grey-x-transparent);
@@ -68,21 +79,33 @@ h2 {
 
 button {
   background: var(--color-button);
-  border: none;
+  border: none !important;
+  box-shadow: var(--color-secondary) -3px 3px 0px 0px;
+  border-style: solid solid none none;
   color: white;
   font-family: RobotoMono-Regular;
   text-transform: uppercase;
   letter-spacing: 0.3px;
-  padding: 0.1rem 1rem;
+  padding: 0.7rem 1rem;
   font-size: 15px;
   cursor: pointer;
   transition: filter 0.2s linear;
+  min-width: 10rem;
 }
 
 button.destroy {
   background: var(--color-button-destroy);
+  box-shadow: var(--color-secondary-dark) -3px 3px 0px 0px;
 }
 
 button:hover {
   filter: brightness(80%);
+}
+
+label {
+  font-family: RobotoMono-Regular;
+  color: var(--color-label);
+  letter-spacing: 2px;
+  font-size: 0.9rem;
+  text-transform: uppercase;
 }
