@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 import Datepicker from '@vuepic/vue-datepicker';
 import { ref } from 'vue';
 import '@vuepic/vue-datepicker/dist/main.css';
@@ -19,9 +19,9 @@ export default {
     setTrips(trips) {
       localStorage.setItem('trips', trips);
     },
-    async getWeatherData(formattedStartDate, formattedEndDate) {
+    async getWeatherData(formattedStartDate, formattedEndDate, location) {
       const weatherData = await fetch(
-        `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Berlin/${formattedStartDate}/${formattedEndDate}?unitGroup=metric&elements=datetime%2CdatetimeEpoch%2Cname%2Caddress%2CresolvedAddress%2Ctemp%2Cprecipprob&include=days&key=7649LKZDXGTWTK2HGWMLDTUVA&contentType=json`
+        `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}/${formattedStartDate}/${formattedEndDate}?unitGroup=metric&elements=datetime%2CdatetimeEpoch%2Cname%2Caddress%2CresolvedAddress%2Ctemp%2Cprecipprob&include=days&key=7649LKZDXGTWTK2HGWMLDTUVA&contentType=json`
       );
       // TODO catch error
       return weatherData.json();
@@ -33,7 +33,7 @@ export default {
       return {
         averageTemperature: this.getAverageWeatherFeatureOverDays('temp', days),
         averagePrecipitationProbability: this.getAverageWeatherFeatureOverDays(
-          'preciprob',
+          'precipprob',
           days
         ),
       };
@@ -46,19 +46,12 @@ export default {
       const formData = new FormData(document.querySelector('form'));
       const formattedStartDate = this.formatDate(this.$data.date[0]);
       const formattedEndDate = this.formatDate(this.$data.date[1]);
-      const weatherData = await this.getWeatherData(
-        formattedStartDate,
-        formattedEndDate
-      );
 
       let newTrip = {
         dates: {
           startDate: formattedStartDate,
           endDate: formattedEndDate,
         },
-        weather: this.getAverageTemperatureAndPrecipitationOverDays(
-          weatherData.days
-        ),
       };
       for (const entry of formData.entries()) {
         newTrip = {
@@ -66,6 +59,16 @@ export default {
           [entry[0]]: entry[1],
         };
       }
+      const weatherData = await this.getWeatherData(
+        formattedStartDate,
+        formattedEndDate,
+        newTrip.location
+      );
+
+      newTrip.weather = this.getAverageTemperatureAndPrecipitationOverDays(
+        weatherData.days
+      );
+
       const newTripID = self.crypto.randomUUID();
       return {
         trip: newTrip,
@@ -75,8 +78,11 @@ export default {
     async save(event) {
       const { id: newTripID, trip: newTrip } = await this.createNewTrip();
       const trips = this.getTrips();
-      const newTrips = JSON.stringify({ ...trips, [newTripID]: newTrip });
-      this.setTrips(newTrips);
+      const updatedTripsList = JSON.stringify({
+        ...trips,
+        [newTripID]: newTrip,
+      });
+      this.setTrips(updatedTripsList);
       console.log('New trips: ', this.getTrips());
       // Navigate to new trip page
       location.href = `/trip?id=${newTripID}`;
@@ -88,14 +94,115 @@ export default {
 <template>
   <h1>New trip</h1>
   <form @submit.prevent>
-    <label for="location">When?</label>
-    <Datepicker range v-model="date"></Datepicker>
-    <label for="title">Trip title:</label>
-    <input type="text" id="title" name="title" required />
-    <label for="location">Where to?</label>
-    <input type="text" id="location" name="location" required />
+    <div class="entry">
+      <label for="title">Trip title</label>
+      <div class="input-wrapper">
+        <input type="text" id="title" name="title" required />
+      </div>
+    </div>
+    <div class="entry">
+      <label for="location">Where to?</label>
+      <div class="input-wrapper">
+        <input type="text" id="location" name="location" required />
+      </div>
+    </div>
+    <div class="entry">
+      <label for="dates">When?</label>
+      <div class="input-wrapper">
+        <Datepicker
+          range
+          v-model="date"
+          inputClassName="dp-custom-input"
+          :enableTimePicker="false"
+        ></Datepicker>
+      </div>
+    </div>
     <button type="submit" @click="save">Save</button>
   </form>
 </template>
 
-<style scoped></style>
+<style>
+.dp__menu {
+  font-family: RobotoMono-Regular;
+}
+.dp__theme_light {
+  --dp-background-color: #ffffff;
+  --dp-text-color: #212121;
+  --dp-hover-color: #f3f3f3;
+  --dp-hover-text-color: #212121;
+  --dp-hover-icon-color: #959595;
+  --dp-primary-color: var(--color-primary);
+  --dp-primary-text-color: #f8f5f5;
+  --dp-secondary-color: #c0c4cc;
+  --dp-border-color: #ddd;
+  --dp-menu-border-color: #ddd;
+  --dp-border-color-hover: #aaaeb7;
+  --dp-disabled-color: #f6f6f6;
+  --dp-scroll-bar-background: #f3f3f3;
+  --dp-scroll-bar-color: #959595;
+  --dp-success-color: var(--color-primary);
+  --dp-success-color-disabled: #a3d9b1;
+  --dp-icon-color: #959595;
+  --dp-danger-color: #ff6f60;
+}
+
+input,
+.dp-custom-input {
+  width: 100%;
+  border: solid 2px whitesmoke;
+  border-radius: 3px;
+  font-family: RobotoMono-Regular;
+  font-size: 1rem;
+  transition: background-color 0.2s linear, border-color 0.2s linear;
+}
+
+.dp-custom-input {
+  padding: 0.6rem 0.6rem 0.6rem 2.6rem;
+}
+
+input {
+  padding: 0.6rem;
+}
+
+input:hover,
+.dp-custom-input:hover {
+  background: var(--color-secondary-x-light);
+  border: solid 2px whitesmoke !important;
+}
+
+input:active,
+input:focus,
+.dp-custom-input.dp__input_focus:active,
+.dp-custom-input.dp__input_focus:focus {
+  border: solid 2px var(--color-secondary) !important;
+  background: var(--color-secondary-x-light);
+  outline: none;
+}
+</style>
+
+<style scoped>
+form {
+  width: 60% !important;
+}
+
+.entry {
+  margin: 1rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.input-wrapper {
+  flex: 2;
+}
+
+label {
+  padding-right: 1rem;
+  flex: 1;
+  display: block;
+}
+
+button {
+  margin-top: 1rem;
+}
+</style>
