@@ -25,7 +25,7 @@ export default {
       <div>
         <nav>
           <RouterLink to="/">My trips</RouterLink>
-          <RouterLink to="/trip-ideas">Trip ideas</RouterLink>
+          <RouterLink to="/about">About + Trip ideas</RouterLink>
           <RouterLink to="/privacy-policy">Privacy policy</RouterLink>
           <RouterLink to="/debugger">Debugger</RouterLink>
         </nav>
@@ -70,9 +70,11 @@ header {
 }
 
 main {
-  padding: 2rem;
   height: 100%;
   padding: 2rem;
+  max-width: 60rem;
+  width: 80%;
+  margin: 0 auto;
 }
 
 .logo {
