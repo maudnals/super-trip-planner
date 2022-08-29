@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 import Trip from '@/components/Trip.vue';
 
 export default {
@@ -7,7 +7,6 @@ export default {
   },
   data() {
     return {
-      tripID: this.getTripIdFromUrl(),
       trip: this.getTrip(),
     };
   },
