@@ -3,9 +3,9 @@ import TripsListView from '../views/TripsListView.vue';
 import NewTripView from '../views/NewTripView.vue';
 import TripView from '../views/TripView.vue';
 import NotFoundView from '../views/NotFoundView.vue';
-import TripIdeasView from '../views/TripIdeasView.vue';
 import DebuggerView from '../views/DebuggerView.vue';
 import AboutView from '../views/AboutView.vue';
+import PrivacyPolicyView from '../views/PrivacyPolicyView.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -26,14 +26,14 @@ const router = createRouter({
       component: TripView,
     },
     {
-      path: '/trip-ideas',
-      name: 'trip ideas',
-      component: TripIdeasView,
-    },
-    {
       path: '/about',
       name: 'about',
       component: AboutView,
+    },
+    {
+      path: '/privacy-policy',
+      name: 'privacy-policy',
+      component: PrivacyPolicyView,
     },
     {
       path: '/debugger',
