@@ -1,5 +1,6 @@
 <script>
 import TripCard from '@/components/TripCard.vue';
+import { getPresetTrips } from '../data/data.trips.js';
 
 export default {
   components: {
@@ -13,6 +14,12 @@ export default {
   methods: {
     createNewTrip(event) {
       location.href = '/new-trip';
+    },
+    createMultipleTrips(event) {
+      const trips = getPresetTrips();
+      this.clearAllTrips();
+      localStorage.setItem('trips', JSON.stringify(trips));
+      this.$data.trips = this.getTrips();
     },
     clearAllTrips() {
       localStorage.clear();
@@ -31,8 +38,7 @@ export default {
 <template>
   <h1>My trips</h1>
   <div class="buttons-wrapper">
-    <button @click="createNewTrip">➕ New trip</button>
-    <button @click="clearAllTrips" class="destroy">❌ Delete all trips</button>
+      <button @click="createMultipleTrips">✨ Create multiple trips</button>
   </div>
   <li v-for="(trip, index) in trips">
     <a :href="'/trip?id=' + index">
