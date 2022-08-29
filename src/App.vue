@@ -26,7 +26,7 @@ export default {
         <nav>
           <RouterLink to="/">My trips</RouterLink>
           <RouterLink to="/trip-ideas">Trip ideas</RouterLink>
-          <RouterLink to="/about">About</RouterLink>
+          <RouterLink to="/privacy-policy">Privacy policy</RouterLink>
           <RouterLink to="/debugger">Debugger</RouterLink>
         </nav>
       </div>
