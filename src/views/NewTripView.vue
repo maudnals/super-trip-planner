@@ -131,7 +131,7 @@ export default defineComponent({
 
 <style>
 .dp__menu {
-  font-family: RobotoMono-Regular;
+  font-family: 'Roboto';
 }
 .dp__theme_light {
   --dp-background-color: #ffffff;
@@ -159,7 +159,7 @@ input,
   width: 100%;
   border: solid 2px whitesmoke;
   border-radius: 3px;
-  font-family: RobotoMono-Regular;
+  font-family: 'Roboto';
   font-size: 1rem;
   transition: background-color 0.2s linear, border-color 0.2s linear;
 }

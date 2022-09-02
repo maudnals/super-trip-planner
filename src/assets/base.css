@@ -53,13 +53,18 @@
   src: url('@/assets/the-wanters.ttf') format('truetype');
 }
 
+@font-face {
+  font-family: 'Roboto';
+  src: url('@/assets/roboto-mono-regular.ttf') format('truetype');
+}
+
 body {
   min-height: 100vh;
   color: var(--color-text);
   background: var(--color-background);
   transition: color 0.5s, background-color 0.5s;
   line-height: 1.6;
-  font-family: RobotoMono-Regular;
+  font-family: 'Roboto';
   font-size: 16px;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -96,7 +101,7 @@ button {
   background: var(--color-button);
   border-style: solid solid none none;
   color: white;
-  font-family: RobotoMono-Regular;
+  font-family: 'Roboto';
   text-transform: uppercase;
   letter-spacing: 0.3px;
   padding: 0.7rem 1rem;
@@ -104,7 +109,7 @@ button {
   cursor: pointer;
   transition: filter 0.2s linear;
   min-width: 10rem;
-  min-height: 52px;
+  min-height: 54px;
   border: none !important;
 }
 
@@ -126,7 +131,7 @@ button:hover {
 }
 
 label {
-  font-family: RobotoMono-Regular;
+  font-family: 'Roboto';
   color: var(--color-label);
   letter-spacing: 2px;
   font-size: 0.9rem;
