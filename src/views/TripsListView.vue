@@ -13,9 +13,10 @@ export default defineComponent({
     };
   },
   methods: {
-    createNewTrip(event) {
+    createNewTrip(event: any) {
       location.href = '/new-trip';
     },
+    navigateToTrip(event: any) {
       this.$router.push({ name: 'trip', query: { id: tripId } });
     },
     clearAllTrips() {

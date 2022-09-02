@@ -24,25 +24,28 @@ export default defineComponent({
         }
       );
       const geocoder = new google.maps.Geocoder();
-      geocoder.geocode({ address: address }, function (results, status) {
-        if (status == 'OK') {
-          map.setCenter(results[0].geometry.location);
-          var marker = new google.maps.Marker({
-            map: map,
-            position: results[0].geometry.location,
-          });
-        } else {
-          alert(
-            'Geocode was not successful for the following reason: ' + status
-          );
+      geocoder.geocode(
+        { address: address },
+        function (results: any, status: any) {
+          if (status == 'OK') {
+            map.setCenter(results[0].geometry.location);
+            var marker = new google.maps.Marker({
+              map: map,
+              position: results[0].geometry.location,
+            });
+          } else {
+            alert(
+              'Geocode was not successful for the following reason: ' + status
+            );
+          }
         }
-      });
+      );
     },
   },
   mounted() {
     this.initMap();
   },
-};
+});
 </script>
 
 <template>
@@ -67,7 +70,9 @@ export default defineComponent({
 
 <style scoped>
 #mapEl {
-  height: 500px;
-  width: 500px;
+  aspect-ratio: 3/2;
+  margin: 1.4rem auto;
+  width: 80%;
+  padding: 1rem 0;
 }
 </style>

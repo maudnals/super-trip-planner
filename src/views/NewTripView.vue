@@ -2,9 +2,10 @@
 import Datepicker from '@vuepic/vue-datepicker';
 import { ref } from 'vue';
 import '@vuepic/vue-datepicker/dist/main.css';
+import { defineComponent } from 'vue';
 import { getTrips, setTrips } from '../utils/utils.localStorage.js';
 
-export default {
+export default defineComponent({
   components: { Datepicker },
   data() {
     return {
@@ -12,25 +13,24 @@ export default {
     };
   },
   methods: {
-    getTrips() {
-      return localStorage.getItem('trips')
-        ? JSON.parse(localStorage.getItem('trips'))
-        : {};
-    },
-    setTrips(trips) {
-      localStorage.setItem('trips', trips);
-    },
-    async getWeatherData(formattedStartDate, formattedEndDate, location) {
+    async getWeatherData(
+      formattedStartDate: string,
+      formattedEndDate: string,
+      location: string
+    ) {
       const weatherData = await fetch(
         `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}/${formattedStartDate}/${formattedEndDate}?unitGroup=metric&elements=datetime%2CdatetimeEpoch%2Cname%2Caddress%2CresolvedAddress%2Ctemp%2Cprecipprob&include=days&key=7649LKZDXGTWTK2HGWMLDTUVA&contentType=json`
       );
       // TODO catch error
       return weatherData.json();
     },
-    getAverageWeatherFeatureOverDays(featureName, days) {
-      return days.reduce((sum, day) => sum + day[featureName], 0) / days.length;
+    getAverageWeatherFeatureOverDays(featureName: string, days: any) {
+      return (
+        days.reduce((sum: Number, day: any) => sum + day[featureName], 0) /
+        days.length
+      );
     },
-    getAverageTemperatureAndPrecipitationOverDays(days) {
+    getAverageTemperatureAndPrecipitationOverDays(days: any) {
       return {
         averageTemperature: this.getAverageWeatherFeatureOverDays('temp', days),
         averagePrecipitationProbability: this.getAverageWeatherFeatureOverDays(
@@ -39,19 +39,27 @@ export default {
         ),
       };
     },
-    formatDate(date) {
+    formatDate(date: any) {
       return new Date(date).toISOString().substring(0, 10);
     },
     async createNewTrip() {
       // 2022-07-06/2022-07-19
-      const formData = new FormData(document.querySelector('form'));
-      const formattedStartDate = this.formatDate(this.$data.date[0]);
-      const formattedEndDate = this.formatDate(this.$data.date[1]);
+      const formData = new FormData(
+        document.querySelector('form') as HTMLFormElement
+      );
+
+      const formattedStartDate = this.formatDate(this?.$data?.date?.[0]);
+      const formattedEndDate = this.formatDate(this?.$data?.date?.[1]);
 
       let newTrip = {
         dates: {
           startDate: formattedStartDate,
           endDate: formattedEndDate,
+        },
+        location: '',
+        weather: {
+          averageTemperature: 0,
+          averagePrecipitationProbability: 0,
         },
       };
       for (const entry of formData.entries()) {
@@ -70,25 +78,25 @@ export default {
         weatherData.days
       );
 
-      const newTripID = self.crypto.randomUUID();
+      const newTripId = self.crypto.randomUUID();
       return {
         trip: newTrip,
-        id: newTripID,
+        id: newTripId,
       };
     },
-    async save(event) {
-      const { id: newTripID, trip: newTrip } = await this.createNewTrip();
+    async save(event: any) {
+      const { id: newTripId, trip: newTrip } = await this.createNewTrip();
       const trips = getTrips();
       const updatedTripsList = JSON.stringify({
         ...trips,
-        [newTripID]: newTrip,
+        [newTripId]: newTrip,
       });
       setTrips(updatedTripsList);
       // Navigate to new trip page
       this.$router.push({ name: 'trip', query: { id: newTripId } });
     },
   },
-};
+});
 </script>
 
 <template>
