@@ -1,7 +1,8 @@
 <script lang="ts">
 import TripInfoPoint from './TripInfoPoint.vue';
+import { defineComponent } from 'vue';
 
-export default {
+export default defineComponent({
   props: ['trip'],
   components: {
     TripInfoPoint,

@@ -1,5 +1,6 @@
 <script lang="ts">
-export default {
+import { defineComponent } from 'vue';
+export default defineComponent({
   data() {
     return {
       platform: navigator?.userAgentData?.platform,

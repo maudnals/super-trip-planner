@@ -1,8 +1,9 @@
 <script lang="ts">
 import TripCard from '@/components/TripCard.vue';
+import { defineComponent } from 'vue';
 import { getPresetTrips } from '../data/data.trips.js';
 
-export default {
+export default defineComponent({
   components: {
     TripCard,
   },
@@ -22,13 +23,7 @@ export default {
       // TODO improve
       this.$data.trips = () => ({});
     },
-    getTrips() {
-      return localStorage.getItem('trips')
-        ? JSON.parse(localStorage.getItem('trips'))
-        : {};
-    },
-  },
-};
+});
 </script>
 
 <template>

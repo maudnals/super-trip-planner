@@ -1,7 +1,7 @@
 <script lang="ts">
-navigator.geolocation.getCurrentPosition(
-  () => {
-    console.log('ok');
+import { defineComponent } from 'vue';
+
+export default defineComponent({
   },
   () => {
     console.log('no');
