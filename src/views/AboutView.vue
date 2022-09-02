@@ -64,8 +64,8 @@ export default defineComponent({
   <div class="title-button-group">
     <h1>About</h1>
     <button class="primary" @click="share">
-      Share
       <span class="share-icon" :class="getIconName()">...</span>
+      Share
     </button>
   </div>
   <div class="iframe-wrapper">
@@ -86,11 +86,21 @@ export default defineComponent({
   margin-top: 2rem;
 }
 
+button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .share-icon {
+  margin-right: 0.5rem;
+  display: inline-block;
   color: transparent;
   background-size: contain;
   background-repeat: no-repeat;
   background-image: url('@/assets/share-default.svg');
+  width: 33px;
+  height: 33px;
 }
 
 .share-mac-ios {

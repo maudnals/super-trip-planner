@@ -29,7 +29,7 @@ export function getPresetTrips(): any {
         startDate: '2022-10-19',
         endDate: '2022-10-21',
       },
-      title: 'Nantes DevFest conf 🥐',
+      title: 'Nantes DevFest 🥐',
       location: 'Nantes',
       weather: {
         averageTemperature: 12.466666666666667,
