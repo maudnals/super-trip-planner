@@ -15,11 +15,7 @@ export default {
     createNewTrip(event) {
       location.href = '/new-trip';
     },
-    createMultipleTrips(event) {
-      const trips = getPresetTrips();
-      this.clearAllTrips();
-      localStorage.setItem('trips', JSON.stringify(trips));
-      this.$data.trips = this.getTrips();
+      this.$router.push({ name: 'trip', query: { id: tripId } });
     },
     clearAllTrips() {
       localStorage.clear();

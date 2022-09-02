@@ -85,7 +85,7 @@ export default {
       this.setTrips(updatedTripsList);
       console.log('New trips: ', this.getTrips());
       // Navigate to new trip page
-      location.href = `/trip?id=${newTripID}`;
+      this.$router.push({ name: 'trip', query: { id: newTripId } });
     },
   },
 };
