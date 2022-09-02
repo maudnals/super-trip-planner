@@ -1,11 +1,11 @@
-export function getPresetTrips() {
+export function getPresetTrips(): any {
   return {
     [`${self.crypto.randomUUID()}`]: {
       dates: {
         startDate: '2022-09-08',
         endDate: '2022-09-09',
       },
-      title: 'Utrecht Fronteers conf 🧇',
+      title: 'Utrecht Fronteers 🧇',
       location: 'Utrecht',
       weather: {
         averageTemperature: 17.05,

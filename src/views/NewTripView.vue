@@ -2,6 +2,7 @@
 import Datepicker from '@vuepic/vue-datepicker';
 import { ref } from 'vue';
 import '@vuepic/vue-datepicker/dist/main.css';
+import { getTrips } from '../utils/utils.localStorage.js';
 
 export default {
   components: { Datepicker },
