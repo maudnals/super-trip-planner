@@ -20,6 +20,7 @@
   --color-secondary-x-light: #ffd4b3;
   --color-black: #151819;
   --color-grey-transparent: rgb(162 199 255 / 61%);
+  --color-grey: rgba(80, 106, 145, 0.431);
   --color-grey-x-transparent: rgba(162, 199, 255, 0.2);
 }
 
@@ -27,7 +28,7 @@
 :root {
   --color-card: var(--color-white);
   --color-background: var(--color-primary-x-light);
-  --color-border: var(--color-grey-transparent);
+  --color-border: var(--color-grey);
   --color-heading: var(--color-primary-transparent);
   --color-button: var(--color-primary);
   --color-button-destructive: var(--color-secondary);
@@ -146,7 +147,7 @@ main {
   margin: 0 auto;
 }
 
-@media only screen and (min-device-width: 480px) {
+@media only screen and (min-width: 480px) {
   .title-button-group {
     flex-direction: row;
     align-items: center;

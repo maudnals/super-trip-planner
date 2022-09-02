@@ -51,8 +51,10 @@ export default defineComponent({
   </div>
 </template>
 
-<style scoped>
+<style>
 hr {
-  margin: 1rem 0;
+  border-bottom: solid 1px var(--color-grey);
+  border-top: 0;
+  margin: 0.5rem;
 }
 </style>

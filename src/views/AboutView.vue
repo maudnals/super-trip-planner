@@ -93,14 +93,21 @@ button {
 }
 
 .share-icon {
+  --size: 33px;
   margin-right: 0.5rem;
   display: inline-block;
   color: transparent;
   background-size: contain;
   background-repeat: no-repeat;
   background-image: url('@/assets/share-default.svg');
-  width: 33px;
-  height: 33px;
+  width: var(--size);
+  height: var(--size);
+}
+
+@media only screen and (min-width: 480px) {
+  .share-icon {
+    --size: 22px;
+  }
 }
 
 .share-mac-ios {

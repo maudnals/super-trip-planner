@@ -69,7 +69,7 @@ header {
   display: none;
 }
 
-@media only screen and (min-device-width: 480px) {
+@media only screen and (min-width: 480px) {
   .logo {
     display: block;
     margin: 0 auto;

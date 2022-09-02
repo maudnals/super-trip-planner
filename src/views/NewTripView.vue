@@ -129,7 +129,7 @@ export default defineComponent({
   </form>
 </template>
 
-<style scoped>
+<style>
 .dp__menu {
   font-family: RobotoMono-Regular;
 }
