@@ -2,7 +2,7 @@
 import Datepicker from '@vuepic/vue-datepicker';
 import { ref } from 'vue';
 import '@vuepic/vue-datepicker/dist/main.css';
-import { getTrips } from '../utils/utils.localStorage.js';
+import { getTrips, setTrips } from '../utils/utils.localStorage.js';
 
 export default {
   components: { Datepicker },
@@ -78,13 +78,12 @@ export default {
     },
     async save(event) {
       const { id: newTripID, trip: newTrip } = await this.createNewTrip();
-      const trips = this.getTrips();
+      const trips = getTrips();
       const updatedTripsList = JSON.stringify({
         ...trips,
         [newTripID]: newTrip,
       });
-      this.setTrips(updatedTripsList);
-      console.log('New trips: ', this.getTrips());
+      setTrips(updatedTripsList);
       // Navigate to new trip page
       this.$router.push({ name: 'trip', query: { id: newTripId } });
     },
