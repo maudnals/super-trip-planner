@@ -2,37 +2,37 @@
 import { RouterLink, RouterView } from 'vue-router';
 
 export default {
-  data() {
-    return {
-      platform: navigator?.userAgentData?.platform,
-      isMobile: navigator?.userAgentData?.mobile,
-    };
-  },
+  data() {},
 };
 </script>
 
 <template>
-  <div :class="{ 'app-wrapper': true, mobile: isMobile }">
+  <div class="app-wrapper">
     <header>
       <img
         alt="App logo"
         class="logo"
         src="@/assets/logo-train.png"
-        width="125"
-        height="125"
+        width="110"
+        height="110"
       />
       <div class="app-name">Super Trip Planner</div>
       <div>
         <nav>
           <RouterLink to="/">My trips</RouterLink>
-          <RouterLink to="/about">About + Trip ideas</RouterLink>
-          <RouterLink to="/privacy-policy">Privacy policy</RouterLink>
-          <RouterLink to="/debugger">Debugger</RouterLink>
+          <RouterLink to="/about">About</RouterLink>
+          <RouterLink to="/trip-ideas">Trip ideas</RouterLink>
         </nav>
       </div>
+      <RouterLink class="debugger" to="/debugger">Debugger</RouterLink>
     </header>
-
     <main>
+      <!--<a
+        href="https://twitter.com/share?ref_src=twsrc%5Etfw"
+        class="twitter-share-button"
+        data-show-count="false"
+        >Share on Twitter</a
+      >-->
       <RouterView />
     </main>
   </div>
@@ -46,10 +46,6 @@ export default {
   display: flex;
   height: 100vh;
   flex-direction: column;
-}
-
-.mobile {
-  flex-direction: column-reverse;
 }
 
 .app-name {
@@ -69,17 +65,21 @@ header {
   box-shadow: var(--color-primary-transparent) 0px 6px 20px 0px;
 }
 
-main {
-  height: 100%;
-  padding: 2rem;
-  max-width: 60rem;
-  width: 80%;
-  margin: 0 auto;
+.logo {
+  display: none;
 }
 
-.logo {
-  display: block;
-  margin: 0 auto;
+@media only screen and (min-device-width: 480px) {
+  .logo {
+    display: block;
+    margin: 0 auto;
+  }
+}
+
+nav {
+  width: 100%;
+  text-align: center;
+  padding: 1rem 0;
 }
 
 a {
@@ -89,22 +89,18 @@ a {
 nav a {
   text-decoration: none;
   color: var(--color-primary-x-light);
-  transition: 0.3s;
+  transition: color 0.3s;
+  text-transform: uppercase;
 }
 
 nav a:hover {
-  background-color: var(--color-primary-x-light-transparent);
-}
-
-nav {
-  width: 100%;
-  text-align: center;
-  padding: 1rem 0;
+  color: var(--color-text-inverted);
 }
 
 nav a.router-link-exact-active {
   background-color: var(--color-primary-x-light-transparent);
   color: var(--color-text-inverted);
+  text-decoration: wavy underline;
 }
 
 nav a.router-link-exact-active:hover {
@@ -119,5 +115,12 @@ nav a {
 
 nav a:first-of-type {
   border: 0;
+}
+
+.debugger {
+  background: var(--color-secondary);
+  position: absolute;
+  top: 10px;
+  left: 10px;
 }
 </style>

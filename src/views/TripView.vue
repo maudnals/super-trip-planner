@@ -1,7 +1,9 @@
 <script lang="ts">
 import Trip from '@/components/Trip.vue';
+import { defineComponent } from 'vue';
+import { getTrips } from '../utils/utils.localStorage.js';
 
-export default {
+export default defineComponent({
   components: {
     Trip,
   },
@@ -11,20 +13,19 @@ export default {
     };
   },
   methods: {
-    // TODO does this need to be here or could it be outside?
     getTripIdFromUrl() {
       const searchParams = new URLSearchParams(location.search);
       return searchParams.get('id');
     },
     getTrip() {
       const tripId = this.getTripIdFromUrl();
-      const trip = JSON.parse(localStorage.getItem('trips'))[tripId];
+      const trip = getTrips()[tripId ? tripId : 0];
       if (!trip) {
-        location.href = '/not-found';
+        this.$router.push('not-found');
       } else return trip;
     },
   },
-};
+});
 </script>
 
 <template>

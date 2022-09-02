@@ -14,10 +14,9 @@ export default defineConfig({
       name: 'configure-response-headers',
       configureServer: (server) => {
         server.middlewares.use((_req, res, next) => {
-          // TODODEMO UNCOMMENT
-          // res.setHeader('Referrer-Policy', 'no-referrer');
-          // TODODEMO UNCOMMENT
+          // ⬇️ TODODEMO UNCOMMENT
           // res.setHeader('Permissions-Policy', 'camera=(), microphone=()');
+          // ⬆️ TODODEMO UNCOMMENT
           next();
         });
       },

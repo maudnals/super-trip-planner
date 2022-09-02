@@ -3,6 +3,7 @@ import TripsListView from '../views/TripsListView.vue';
 import NewTripView from '../views/NewTripView.vue';
 import TripView from '../views/TripView.vue';
 import NotFoundView from '../views/NotFoundView.vue';
+import TripIdeasView from '../views/TripIdeasView.vue';
 import DebuggerView from '../views/DebuggerView.vue';
 import AboutView from '../views/AboutView.vue';
 import PrivacyPolicyView from '../views/PrivacyPolicyView.vue';
@@ -17,7 +18,7 @@ const router = createRouter({
     },
     {
       path: '/new-trip',
-      name: 'new trip',
+      name: 'new-trip',
       component: NewTripView,
     },
     {
@@ -31,6 +32,11 @@ const router = createRouter({
       component: AboutView,
     },
     {
+      path: '/trip-ideas',
+      name: 'trip-ideas',
+      component: TripIdeasView,
+    },
+    {
       path: '/privacy-policy',
       name: 'privacy-policy',
       component: PrivacyPolicyView,
@@ -39,11 +45,6 @@ const router = createRouter({
       path: '/debugger',
       name: 'debugger',
       component: DebuggerView,
-    },
-    {
-      path: '/not-found',
-      name: 'not found',
-      component: NotFoundView,
     },
   ],
 });

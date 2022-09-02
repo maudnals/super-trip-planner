@@ -12,7 +12,7 @@
   --color-secondary-x-light: #fff3ef; */
   --color-primary-dark: #0033ab;
   --color-primary-transparent: #0033ab;
-  --color-primary-x-light: #c1d4ff;
+  --color-primary-x-light: #98b8ff;
   --color-primary-x-light-transparent: #0033ab6e;
   --color-primary: #0033ab;
   --color-secondary: #f36a00;
@@ -30,7 +30,7 @@
   --color-border: var(--color-grey-transparent);
   --color-heading: var(--color-primary-transparent);
   --color-button: var(--color-primary);
-  --color-button-destroy: var(--color-secondary);
+  --color-button-destructive: var(--color-secondary);
   --color-label: var(--color-secondary);
   --color-text: var(--color-black);
   --color-text-inverted: var(--color-white);
@@ -75,11 +75,11 @@ h1 {
 
 h2 {
   font-size: 2rem;
-  margin-top: 1.5rem;
+  margin: 1.2rem 0;
 }
 
 li h2 {
-  margin-top: 0;
+  margin: 0;
 }
 
 p {
@@ -102,8 +102,8 @@ button {
   min-width: 10rem;
 }
 
-button.destroy {
-  background: var(--color-button-destroy);
+button.destructive {
+  background: var(--color-button-destructive);
   box-shadow: var(--color-secondary-dark) -3px 3px 0px 0px;
 }
 
@@ -117,4 +117,41 @@ label {
   letter-spacing: 2px;
   font-size: 0.9rem;
   text-transform: uppercase;
+}
+
+.title-button-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+main {
+  height: 100%;
+  padding: 1rem 0;
+  max-width: 60rem;
+  width: 80%;
+  margin: 0 auto;
+}
+
+@media only screen and (min-device-width: 480px) {
+  .title-button-group {
+    flex-direction: row;
+    align-items: center;
+  }
+  main {
+    padding: 2rem;
+  }
+  .buttons-group-wrapper {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.buttons-group-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.buttons-group-wrapper button {
+  margin: 1rem 1rem 0 0;
 }

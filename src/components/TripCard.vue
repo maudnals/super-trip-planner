@@ -1,9 +1,9 @@
 <script setup lang="ts">
 defineProps<{
-  endDate: String;
-  location: String;
-  startDate: String;
-  title: String;
+  endDate: string;
+  location: string;
+  startDate: string;
+  title: string;
 }>();
 </script>
 
@@ -24,6 +24,7 @@ defineProps<{
   color: var(--color-text);
   box-shadow: var(--color-shadow-light) 0px 7px 29px 0px;
   transition: box-shadow 0.2s linear, transform 0.1s linear;
+  cursor: pointer;
 }
 
 .wrapper:hover {
