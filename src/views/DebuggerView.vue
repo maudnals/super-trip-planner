@@ -30,6 +30,7 @@ export default defineComponent({
 </script>
 
 <template>
+  <h1>Debugger</h1>
   <div>
     isWebShareApiAvailable:
     {{ isWebShareApiAvailable ? '✅ true' : '❌ false' }}
@@ -41,14 +42,16 @@ export default defineComponent({
   Trips:
   {{ Object.keys(trips).length || 0 }}
   <div class="buttons-group-wrapper">
-    <button @click="createMultipleTrips">✨ Create multiple trips</button>
+    <button class="primary" @click="createMultipleTrips">
+      ✨ Create multiple trips
+    </button>
     <button @click="clearAllTrips" class="destructive">
       ❌ Delete all trips
     </button>
   </div>
 </template>
 
-<style>
+<style scoped>
 hr {
   margin: 1rem 0;
 }

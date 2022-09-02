@@ -28,7 +28,7 @@ export default defineComponent({
 <template>
   <div class="title-button-group">
     <h1>My trips</h1>
-    <button @click="createNewTrip">+ New trip</button>
+    <button @click="createNewTrip" class="primary">+ New trip</button>
   </div>
   <li v-for="(trip, index) in trips">
     <TripCard

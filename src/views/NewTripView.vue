@@ -125,11 +125,11 @@ export default defineComponent({
         ></Datepicker>
       </div>
     </div>
-    <button type="submit" @click="save">Save</button>
+    <button type="submit" class="primary" @click="save">Save</button>
   </form>
 </template>
 
-<style>
+<style scoped>
 .dp__menu {
   font-family: RobotoMono-Regular;
 }
@@ -190,7 +190,7 @@ input:focus,
 
 <style scoped>
 form {
-  width: 60% !important;
+  max-width: 60rem;
 }
 
 .entry {

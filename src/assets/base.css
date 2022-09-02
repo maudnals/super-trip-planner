@@ -12,15 +12,15 @@
   --color-secondary-x-light: #fff3ef; */
   --color-primary-dark: #0033ab;
   --color-primary-transparent: #0033ab;
-  --color-primary-x-light: #98b8ff;
-  --color-primary-x-light-transparent: #0033ab6e;
+  --color-primary-x-light: #adc7ff;
+  --color-primary-x-light-transparent: #ffffff3b;
   --color-primary: #0033ab;
   --color-secondary: #f36a00;
   --color-secondary-dark: #db4302;
-  --color-secondary-x-light: #f36a00;
+  --color-secondary-x-light: #ffd4b3;
   --color-black: #151819;
-  --color-grey-transparent: rgba(70, 117, 121, 0.5);
-  --color-grey-x-transparent: rgba(70, 117, 121, 0.2);
+  --color-grey-transparent: rgb(162 199 255 / 61%);
+  --color-grey-x-transparent: rgba(162, 199, 255, 0.2);
 }
 
 /* semantic color variables for this project */
@@ -47,6 +47,11 @@
   font-weight: normal;
 }
 
+@font-face {
+  font-family: 'Wanters';
+  src: url('@/assets/the-wanters.ttf') format('truetype');
+}
+
 body {
   min-height: 100vh;
   color: var(--color-text);
@@ -64,7 +69,7 @@ body {
 h1,
 h2,
 h3 {
-  font-family: TheWantersDEMO;
+  font-family: 'Wanters';
   color: var(--color-heading);
   text-transform: capitalize;
 }
@@ -88,8 +93,6 @@ p {
 
 button {
   background: var(--color-button);
-  border: none !important;
-  box-shadow: var(--color-secondary) -3px 3px 0px 0px;
   border-style: solid solid none none;
   color: white;
   font-family: RobotoMono-Regular;
@@ -100,6 +103,15 @@ button {
   cursor: pointer;
   transition: filter 0.2s linear;
   min-width: 10rem;
+  border: none !important;
+}
+
+button.primary {
+  box-shadow: var(--color-secondary) -3px 3px 0px 0px;
+}
+
+hr {
+  color: var(--color-grey-transparent);
 }
 
 button.destructive {
@@ -128,8 +140,8 @@ label {
 main {
   height: 100%;
   padding: 1rem 0;
-  max-width: 60rem;
   width: 80%;
+  max-width: 60rem;
   margin: 0 auto;
 }
 
@@ -139,9 +151,10 @@ main {
     align-items: center;
   }
   main {
-    padding: 2rem;
+    padding: 2rem 0;
   }
   .buttons-group-wrapper {
+    display: flex;
     flex-direction: row;
     align-items: center;
   }

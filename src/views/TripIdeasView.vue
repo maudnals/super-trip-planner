@@ -30,7 +30,9 @@ export default defineComponent({
   <div class="title-button-group">
     <h2>Trip ideas nearby</h2>
     <!--TODO COMMENT/UNCOMMENT-->
-    <button @click="getNearbyTripIdeas">Show trip ideas nearby</button>
+    <button class="primary" @click="getNearbyTripIdeas">
+      Show trip ideas nearby
+    </button>
     <!--TODO COMMENT/UNCOMMENT-->
   </div>
 </template>

@@ -15,12 +15,13 @@ defineProps<{
 <style scoped>
 .wrapper {
   display: flex;
+  justify-content: space-between;
   align-items: flex-end;
   border-top: 0.7px solid var(--color-border);
   padding: 0.4rem 0.2rem;
 }
 
 label {
-  width: 16rem;
+  flex: 1;
 }
 </style>

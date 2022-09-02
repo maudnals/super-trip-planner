@@ -63,7 +63,7 @@ export default defineComponent({
 <template>
   <div class="title-button-group">
     <h1>About</h1>
-    <button @click="share">
+    <button class="primary" @click="share">
       Share
       <span class="share-icon" :class="getIconName()">...</span>
     </button>
@@ -79,7 +79,7 @@ export default defineComponent({
     ></iframe>
   </div>
 </template>
-<style>
+<style scoped>
 .iframe-wrapper {
   text-align: center;
   margin: 0 auto;

@@ -50,29 +50,35 @@ export default defineComponent({
 
 <template>
   <h1>{{ trip?.title }}</h1>
-  <TripInfoPoint :label="'to'" :info="trip?.location" />
-  <TripInfoPoint :label="'from'" :info="trip?.dates?.startDate" />
-  <TripInfoPoint :label="'until'" :info="trip?.dates?.endDate" />
-  <TripInfoPoint
-    :label="'weather at these dates'"
-    :info="
-      trip?.weather?.averagePrecipitationProbability > 50
-        ? '🌧 Rainy'
-        : '🌞 Sunny'
-    "
-  />
-  <TripInfoPoint
-    :label="'average temperature'"
-    :info="trip?.weather?.averageTemperature.toFixed(1) + '°C'"
-  />
-  <div id="mapEl"></div>
+  <div class="info-wrapper">
+    <TripInfoPoint :label="'to'" :info="trip?.location" />
+    <TripInfoPoint :label="'from'" :info="trip?.dates?.startDate" />
+    <TripInfoPoint :label="'until'" :info="trip?.dates?.endDate" />
+    <TripInfoPoint
+      :label="'weather at these dates'"
+      :info="
+        trip?.weather?.averagePrecipitationProbability > 50
+          ? '🌧 Rainy'
+          : '🌞 Sunny'
+      "
+    />
+    <TripInfoPoint
+      :label="'average temperature'"
+      :info="trip?.weather?.averageTemperature.toFixed(1) + '°C'"
+    />
+    <div id="mapEl"></div>
+  </div>
 </template>
 
 <style scoped>
+.info-wrapper {
+  max-width: 40rem;
+  margin: 0 auto;
+}
+
 #mapEl {
   aspect-ratio: 3/2;
   margin: 1.4rem auto;
-  width: 80%;
   padding: 1rem 0;
 }
 </style>
