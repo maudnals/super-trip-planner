@@ -2,6 +2,7 @@
 import TripCard from '@/components/TripCard.vue';
 import { defineComponent } from 'vue';
 import { getPresetTrips } from '../data/data.trips.js';
+import { getTrips } from '../utils/utils.localStorage.js';
 
 export default defineComponent({
   components: {
@@ -9,7 +10,7 @@ export default defineComponent({
   },
   data() {
     return {
-      trips: this.getTrips(),
+      trips: getTrips(),
     };
   },
   methods: {
